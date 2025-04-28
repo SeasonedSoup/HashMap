@@ -1,3 +1,5 @@
+import { LinkedList } from "./linkedList";
+
 class HashMap {
     constructor(loadFactor, capacity) {
         this.loadFactor = loadFactor;
@@ -117,7 +119,7 @@ class HashMap {
         const entries = [];
         for (let i = 0; i < this.capacity; i++) {
             if (this.buckets[i]) {
-                entries.push([this.buckets[i][0],this.buckets[i][1]])   
+                entries.push([this.buckets[i][0],this.buckets[i][1]]);
             }
         }
         return entries
