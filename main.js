@@ -15,6 +15,8 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 
+test.remove('lion')
+
 console.log(test.keys());
 console.log(test.values());
 console.log(test.entries());
