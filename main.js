@@ -15,13 +15,24 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 
-test.remove('lion')
+console.log(test.has('hat'));
+
+console.log(test.length())
 
 console.log(test.keys());
+
+console.log(test.clear())
+
 console.log(test.values());
+
 console.log(test.entries());
+
 console.log(test.capacity)
 
+
+
+
+let addMore = () => {
 test.set('moon', 'silver')
 test.set('jacket', 'green')
 test.set('balls', 'deep')
@@ -35,3 +46,4 @@ test.set('baby', 'shark');
 console.log(test.capacity)
 
 console.log(test.entries());
+}

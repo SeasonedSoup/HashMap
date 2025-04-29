@@ -72,7 +72,7 @@ export class HashMap {
 
     get(key) {
         //find the index where the key exist
-        index = this.hash(key) 
+        const index = this.hash(key) 
 
         if (index < 0 || index >= this.buckets.length) {
             throw new Error("Trying to access index out of bounds");
@@ -85,7 +85,7 @@ export class HashMap {
     }
 
     has(key) { //got lazy explaining should be the same
-        index = this.hash(key);
+        const index = this.hash(key);
 
         if (index < 0 || index >= this.buckets.length) {
             throw new Error("Trying to access index out of bounds");
