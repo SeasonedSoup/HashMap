@@ -17,6 +17,8 @@ test.set('lion', 'golden')
 
 console.log(test.has('hat'));
 
+console.log(test.get('kite'));
+
 console.log(test.length())
 
 console.log(test.keys());
@@ -30,9 +32,9 @@ console.log(test.entries());
 console.log(test.capacity)
 
 
+addMore();
 
-
-let addMore = () => {
+function addMore() {
 test.set('moon', 'silver')
 test.set('jacket', 'green')
 test.set('balls', 'deep')
@@ -46,4 +48,17 @@ test.set('baby', 'shark');
 console.log(test.capacity)
 
 console.log(test.entries());
+
+console.log(test.values());
+
+console.log(test.length())
+
+console.log(test.keys());
+
+console.log(test.has('hat'));
+
+console.log(test.get('kite'));
+
+
+console.log(test.get('galactic'))
 }

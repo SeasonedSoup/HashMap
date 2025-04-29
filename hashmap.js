@@ -91,7 +91,7 @@ export class HashMap {
             throw new Error("Trying to access index out of bounds");
         }
 
-        if (!this,buckets[index]) {
+        if (!this.buckets[index]) {
             return false
         } else {
             return this.buckets[index].findKey(key)
