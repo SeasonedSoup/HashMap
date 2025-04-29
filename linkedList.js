@@ -3,7 +3,7 @@ export class LinkedList {
         this.head = head
     }
     
-    append(value) {
+    append(key, value) {
         if (this.head === null) {
             this.prepend(value);
         } else {
@@ -13,7 +13,7 @@ export class LinkedList {
             tmp.next = new Node(key, value, null)
         }
     }
-    prepend(value) {
+    prepend(key, value) {
         this.head = new Node(key, value, this.head)
     }
 
@@ -80,68 +80,70 @@ export class LinkedList {
         return value
     }
 
-    contains(value) {
+    clear() {
+        this.head = null;
+    }
+    
+    returnKey(key) {
         if (this.head === null) {
-            return false;
+            return null;
         } 
 
         let tmp = this.head 
         while (tmp != null) {
-            if (tmp.value === value) return true;
+            if (tmp.key === key) return tmp.value;
+            tmp = tmp.next
+        }
+        return null;
+    }
+
+    findKeyReplaceVal(key, value) {
+        if (this.head === null) {
+            return false;
+        }
+        let tmp = this.head
+
+        while (tmp != null) {
+            if (tmp.key === key) {
+                tmp.value = value
+                return true;
+            }
             tmp = tmp.next
         }
         return false;
     }
 
-    find(value) {
+    findKey(key) {
         if (this.head === null) {
-            return null;
+            return false;
         } 
-        let count = 0;
         let tmp = this.head
 
         while (tmp != null) {
-            if (tmp.value === value) return count;
-            tmp = tmp.next
-            count++
-        }
-        return null
-    }
-
-    toString() {
-        let res = ''
-        let tmp = this.head 
-
-        while(tmp!= null) {
-            res += `( ${tmp.val} ) -> `
+            if (tmp.key === key) return true;
             tmp = tmp.next
         }
-        res += 'null'
-        return res;
+        return false;
     }
 
-    insertAt(value, index) {
-        if (index >= this.size() || index < 0) {
-            return new Error('not valid index');
-        }
-        if (index === 0) {
-            this.prepend(value)
-        }
+    findKeyIndex(key) {
+        if (this.head === null) {
+            return -1;
+        } 
         let tmp = this.head
-        let curIndex = 0;
+        let index = 0
 
-        while(tmp!=null) {
-            if (index - 1 === curIndex) {
-                tmp.next = new Node(key, value, tmp.next)
-            }
+        while (tmp != null) {
+            if (tmp.key === key) return index;
             tmp = tmp.next
-            curIndex++;
+            index++
         }
+        return -1;
     }
 
     removeAt(index) {  
         if (index >= this.size() || index < 0) {
-        return new Error('not valid index');
+            throw new Error('not valid index');
         } else {
             let tmp = this.head; 
 
@@ -156,6 +158,54 @@ export class LinkedList {
             } 
             tmp.next = tmp.next.next
         }
+    }
+
+    toString() {
+        let res = ''
+        let tmp = this.head 
+
+        while(tmp!= null) {
+            res += `( [${tmp.key}, ${tmp.value}] ) -> `
+            tmp = tmp.next
+        }
+        res += 'null'
+        return res;
+    }
+
+    getKeys() {
+        const keys = []
+        let tmp = this.head 
+
+        while(tmp) {
+            keys.push(tmp.key)
+            tmp = tmp.next
+        }
+
+        return keys
+    }
+
+    getVals() {
+        const values = []
+        let tmp = this.head
+        
+        while(tmp) {
+            values.push(tmp.value)
+            tmp = tmp.next
+        }
+
+        return values
+    }
+
+    getPairs() {
+        const pairs = []
+        let tmp = this.head
+        
+        while (tmp) {
+            pairs.push([tmp.key, tmp.value])
+            tmp = tmp.next
+        } 
+
+        return pairs
     }
 }
 
